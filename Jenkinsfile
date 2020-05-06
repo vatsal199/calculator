@@ -7,14 +7,9 @@ node {
 			git "https://github.com/vatsal199/calculator.git"
     	}
 
-    	stage('Clean') {
+    	stage('Clean & Validate') {
 			echo "Cleaning privious targets..."
-			sh " mvn clean"
-    	}
-
-    	stage('Validate') {
-			echo "Validating the project and Downloading dependecies..."
-			sh " mvn validate"
+			sh " mvn clean validate"
     	}
 
     	stage('Compile') {
@@ -43,5 +38,18 @@ node {
 		    		app.push("${env.BUILD_NUMBER}")
 		    		app.push("latest")
 			}
+    	}
+
+    	stage('Deploy on Node'){
+    	    step{
+    	        step([
+    	        includeRundeckLogs:true,
+    	        jobId: "76cf0cf5-600f-4b5c-890e-670ac2d2df18",
+    	        rundeckInstance: "RundeckConf",
+    	        shouldFailTheBuild: true,
+    	        shouldWaitForRundeckJob: true,
+    	        tailLog: true
+    	        ])
+    	    }
     	}
 }
