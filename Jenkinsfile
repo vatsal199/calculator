@@ -41,8 +41,7 @@ node {
     	}
 
     	stage('Deploy on Node'){
-    	    step{
-    	        step([
+    	    step([
     	        $class:"RundeckNotifier",
     	        includeRundeckLogs:true,
     	        jobId: "76cf0cf5-600f-4b5c-890e-670ac2d2df18",
@@ -51,6 +50,5 @@ node {
     	        shouldWaitForRundeckJob: true,
     	        tailLog: true
     	        ])
-    	    }
     	}
 }
