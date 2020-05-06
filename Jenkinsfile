@@ -4,7 +4,7 @@ node {
 
     	stage('Clone Repository') {
 			echo "Poolig git gepository..."
-			git "https://github.com/gauravishaandixit/SPECalculator.git"
+			git "https://github.com/vatsal199/calculator.git"
     	}
 
     	stage('Clean') {
@@ -41,7 +41,7 @@ node {
 			echo "Uploading docker image to docker hub..."
 			docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
 		    		app.push("${env.BUILD_NUMBER}")
-		    		/*app.push("latest")*/
+		    		app.push("latest")
 			}
     	}
 }
