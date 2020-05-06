@@ -36,7 +36,7 @@ class SpringbootlearnApplicationTests {
 	public void searchCource(){
 		String expectedTitle = "Calculator";
 		String title = driver.getTitle();
-		Assert.assertEquals(expectedTitle,title);
+		Assert.assertEquals(title,expectedTitle);
 		//driver.findElement(By.id("proname")).sendKeys("JAVA");
 		//driver.findElement(By.className("pr-2")).click();
 	}
