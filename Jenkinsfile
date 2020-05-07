@@ -18,7 +18,7 @@ node {
     	}
 
     	stage('Test') {
-			echo "Testing project..."
+			echo "Performing unit testing..."
 			sh " mvn test"
     	}
 
@@ -26,6 +26,11 @@ node {
 			echo "Packaging the project and generating jars..."
 			sh " mvn package"
     	}
+
+    	stage('verify') {
+        	echo "Performing integration testing..."
+        	sh " mvn verify"
+        }
 
     	stage('Build Image') {
 			echo "Generating docker image..."
